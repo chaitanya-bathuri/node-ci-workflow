@@ -9,25 +9,26 @@ on:
        - main
 
 jobs:
-  name: ci
-  runs-on: ubuntu-latest
-  steps:
-      - name: checkout code
-        uses: actions/checkout
-      - name: setup-node
-        uses: actions/setup-node
-        with:
-             node-version: '20'
-      - name: cache-npm-dependencies
-        uses: actions/cache
-        path: 
-          ~/.npm
-        key:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      -  name: checkout code
+         uses: actions/checkout
+      -  name: setup-node
+         uses: actions/setup-node
+         with:
+            node-version: '20'
+      -  name: cache-npm-dependencies
+         uses: actions/cache
+         path: 
+             ~/.npm
+         key:
             hashFiles('package-lock.json')
-      - name: install dependencies
-        run: npm ci 
-      - name: tests
-        run: npm test   
-      - name: build
-        run: npm run build 
+      -  name: install dependencies
+         run: npm ci 
+      -  name: tests
+         run: npm test
+  
+      -  name: build
+         run: npm run build 
            
