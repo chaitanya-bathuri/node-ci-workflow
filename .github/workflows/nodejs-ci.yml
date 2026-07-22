@@ -20,10 +20,8 @@ jobs:
             node-version: '20'
       -  name: cache-npm-dependencies
          uses: actions/cache
-         path: 
-             ~/.npm
-         key:
-            hashFiles('package-lock.json')
+         path: ~/.npm
+         key: hashFiles('package-lock.json')
       -  name: install dependencies
          run: npm ci 
       -  name: tests
